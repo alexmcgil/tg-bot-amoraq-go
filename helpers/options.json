@@ -1,0 +1,23 @@
+{
+    "menuOptions": [
+        [{
+          "text": "🤙 Предложить мем/новость",
+          "callback_data": "/offerMem"
+        }],
+        [{
+          "text": "💊 Интересное",
+          "callback_data": "/stuff"
+        },
+        {
+          "text": "⛪ Контакты",
+          "callback_data": "/links"
+        }]
+      ],
+          
+    "stuffOptions": 
+          [{
+            "text": "Язык Dolbogram",
+            "callback_data": "/dlbLan"
+          }]
+        
+}
