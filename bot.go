@@ -44,7 +44,7 @@ func OnMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 	msg.ReplyMarkup = answers.DefaultKeyboard()
 
 	switch {
-
+	// There is logick of bot answers
 	case answers.SwitchReg(`(?i)интересное`, message.Text):
 		msg = tgbotapi.NewMessage(message.Chat.ID, "Только никому не показывай, что ты здесь найдёшь.")
 		msg.ReplyMarkup = answers.InterestingKeyboard()
@@ -53,14 +53,21 @@ func OnMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 		msg = tgbotapi.NewMessage(message.Chat.ID, "Вот что я для тебя нашёл: https://t.me/setlanguage/dlgram")
 		msg.ReplyMarkup = answers.DefaultKeyboard()
 
+	case answers.SwitchReg(`(?i)жабий`, message.Text):
+		msg = tgbotapi.NewMessage(message.Chat.ID, "Жабий язычок https://t.me/setlanguage/jabka")
+		msg.ReplyMarkup = answers.DefaultKeyboard()
+
 	case answers.SwitchReg(`(?i)контакты`, message.Text):
 		msg = tgbotapi.NewMessage(message.Chat.ID, "Админ -> @alexmcgil")
 
 	case answers.SwitchReg(`(?i)предложить`, message.Text):
 		msg = tgbotapi.NewMessage(message.Chat.ID, "Отправь мне мем или видосик")
 
-	case len(message.Text) == 0:
-		msgF := tgbotapi.NewForward(chatToOffer, message.Chat.ID, message.MessageID)
+	case answers.SwitchReg(`(?i)боте`, message.Text):
+		msg = tgbotapi.NewMessage(message.Chat.ID, "Привет, эта версия бота работает на Go, репозиторий на GitHub https://github.com/alexmcgil/tg-bot-amoraq-go")
+
+	case len(message.Text) == 0: //If message empty -> there is photo/vide/sticker/etc -> forward
+		msgF := tgbotapi.NewForward(chatToOffer, message.Chat.ID, message.MessageID) // this message to chatToOffer
 		msg = tgbotapi.NewMessage(message.Chat.ID, "Ваш мем принят.")
 		bot.Send(msgF)
 

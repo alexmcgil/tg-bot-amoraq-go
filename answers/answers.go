@@ -15,6 +15,9 @@ func DefaultKeyboard() tgbotapi.ReplyKeyboardMarkup {
 		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("⛪ Контакты"),
 		),
+		tgbotapi.NewKeyboardButtonRow(
+			tgbotapi.NewKeyboardButton("🌐 О боте"),
+		),
 	)
 	return numericKeyboard
 }
@@ -23,6 +26,7 @@ func InterestingKeyboard() tgbotapi.ReplyKeyboardMarkup {
 	numericKeyboard := tgbotapi.NewReplyKeyboard(
 		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("🤪 Язык Dolbogram"),
+			tgbotapi.NewKeyboardButton("🐸 Жабий язык"),
 		),
 	)
 	return numericKeyboard
