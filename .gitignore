@@ -12,3 +12,4 @@
 *.out
 
 token.json
+.vscode
