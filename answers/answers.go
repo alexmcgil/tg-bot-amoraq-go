@@ -28,6 +28,9 @@ func InterestingKeyboard() tgbotapi.ReplyKeyboardMarkup {
 			tgbotapi.NewKeyboardButton("🤪 Язык Dolbogram"),
 			tgbotapi.NewKeyboardButton("🐸 Жабий язык"),
 		),
+		tgbotapi.NewKeyboardButtonRow(
+			tgbotapi.NewKeyboardButton("🔙 Назад"),
+		),
 	)
 	return numericKeyboard
 }
