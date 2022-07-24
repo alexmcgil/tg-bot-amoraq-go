@@ -12,8 +12,15 @@ type Key struct {
 }
 
 func Token() string {
+	var token string
 
-	filename, err := os.Open("helpers/token.json")
+	token, present := os.LookupEnv("TOKEN")
+
+	if present {
+		return token
+	}
+
+	filename, err := os.Open("token.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,6 +41,8 @@ func Token() string {
 		log.Fatal(jsonErr)
 	}
 
-	return result.Token
+	token = result.Token
+
+	return token
 
 }
