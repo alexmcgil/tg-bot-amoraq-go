@@ -19,7 +19,7 @@ func main() {
 		log.Panic(err)
 	}
 
-	bot.Debug = true
+	bot.Debug = false
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
@@ -65,6 +65,10 @@ func OnMessage(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 
 	case answers.SwitchReg(`(?i)боте`, message.Text):
 		msg = tgbotapi.NewMessage(message.Chat.ID, "Привет, эта версия бота работает на Go, репозиторий на GitHub https://github.com/alexmcgil/tg-bot-amoraq-go")
+
+	case answers.SwitchReg(`(?i)назад`, message.Text):
+		msg = tgbotapi.NewMessage(message.Chat.ID, "Меню")
+		msg.ReplyMarkup = answers.DefaultKeyboard()
 
 	case len(message.Text) == 0: //If message empty -> there is photo/vide/sticker/etc -> forward
 		msgF := tgbotapi.NewForward(chatToOffer, message.Chat.ID, message.MessageID) // this message to chatToOffer
